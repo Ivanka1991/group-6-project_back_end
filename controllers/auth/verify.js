@@ -8,9 +8,7 @@ const verify = async (req, res) => {
   if (!user) {
     throw new NotFound('Verify error')
   }
-
   await User.findByIdAndUpdate(user._id, { verifyToken: null, verify: true })
-
   res.redirect(`${FRONTEND_URL}`)
 }
 
