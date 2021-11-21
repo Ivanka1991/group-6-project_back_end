@@ -1,6 +1,6 @@
-
 const { NotFound } = require('http-errors')
 const { User } = require('../../models')
+const { FRONTEND_URL } = process.env
 
 const verify = async (req, res) => {
   const { verifyToken } = req.params
@@ -10,11 +10,8 @@ const verify = async (req, res) => {
   }
 
   await User.findByIdAndUpdate(user._id, { verifyToken: null, verify: true })
-  res.json({
-    status: 'success',
-    code: 200,
-    message: 'Email verify success'
-  })
+
+  res.redirect(`${FRONTEND_URL}`)
 }
 
 module.exports = verify
