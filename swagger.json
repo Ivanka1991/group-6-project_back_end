@@ -20,7 +20,7 @@
             "url": "https://kapusta-pro.herokuapp.com/"
         },
         {
-            "url": "http://localhost:3001"
+            "url": "http://localhost:3000"
         }
     ],
     "tags": [
@@ -111,7 +111,7 @@
                             "schema": {
                                 "oneOf": [
                                     {
-                                        "$ref": "#/components/schemas/LoginRequest"
+                                        "$ref": "#/components/schemas/SignupRequest"
                                     }
                                 ]
                             }
@@ -768,14 +768,18 @@
                     "user": {
                         "type": "object",
                         "properties": {
-                            "name": {
-                                "type": "string",
-                                "description": "User's name"
-                            },
                             "email": {
                                 "type": "string",
                                 "description": "User's email",
                                 "format": "email"
+                            },
+                            "avatarURL": {
+                                "type": "string",
+                                "description": "User's avatar url"
+                            },
+                            "token": {
+                                "type": "string",
+                                "description": "User's token"
                             }
                         }
                     }
@@ -783,7 +787,9 @@
                 "example": {
                     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjliOTk5OWFhMWI1OGMxMzE3OGU3NSIsImlhdCI6MTYzNDMxODc0NX0.nKbAAM399iINJFivkFb8Ne2Z7a9rMXrdr3L21remrPs",
                     "user": {
-                        "email": "user@example.com"
+                        "email": "user@example.com",
+                        "avatarURL": "https://s.gravatar.com/avatar/eba8f1acc7592b278fc9febcb9479ef8?s=250&d=identicon",
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlyZW5hLmN6eXJ5a0BnbWFpbC5jb20iLCJpYXQiOjE2Mzc1MTE4NDh9.IoRtV0HTp1Pu8jVMyZZxhNyRIVCB8L5vwjr2TBc7-9E"
                     }
                 }
             },
@@ -807,8 +813,16 @@
                 },
                 "example": {
                     "user": {
-                        "_id": "User's id",
-                        "email": "user@example.com"
+                        "_id": "619a7150931223242bc5f1a473",
+                        "email": "user@gmail.com",
+                        "token": "eyJhbGciOiJIfdsar4NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlyZW5hLmN6eXJ5a0BnbWFpbC5jb20iLCJpYXQiOjE2Mzc1MTE4NDh9.IoRtV0HTp1Pu8jVMyZZxhNyRIVCB8L5vwjr2TBc7-9E",
+                        "verify": true,
+                        "verifyToken": null,
+                        "balance": 0,
+                        "password": "$2a$10$Re.QnkhXsL0k5wmwweKRWXurxxGMTU6FML.A0uNvJVkl2NlRRuZB2K",
+                        "avatarURL": "https://s.gravatar.com/avatar/eba8f1acc7592b278fc9febcb9479ef8?s=250&d=identicon",
+                        "createdAt": "2021-11-21T16:18:25.36eZ",
+                        "updatedAt": "2021-11-21T16:24:08.643Z"
                     }
                 }
             },
@@ -827,9 +841,7 @@
                     }
                 },
                 "example": {
-                    "user": {
-                        "avatarURL": "user_428485647634987643876047640387_avatar.png"
-                    }
+                    "avatarURL": "user_428485647634987643876047640387_avatar.png"
                 }
             },
             "LogoutResponse": {
@@ -932,16 +944,20 @@
                     }
                 },
                 "example": {
-                    "transactionData": {
-                        "date": "2021-09-26T00:00:00.000Z",
-                        "category": "Доход",
-                        "description": "лотерея",
-                        "amount": 110000,
-                        "isIncome": true,
-                        "owner": "616579bfc5c00253cf2ca068",
-                        "_id": "61657a4cfa20452eabaa44f8",
-                        "createdAt": "2021-10-12T12:06:36.588Z",
-                        "updatedAt": "2021-10-12T12:06:36.588Z"
+                    "status": "success",
+                    "code": 201,
+                    "user": {
+                        "result": {
+                            "date": "2021-09-26T00:00:00.000Z",
+                            "category": "Доход",
+                            "description": "лотерея",
+                            "amount": 110000,
+                            "isIncome": true,
+                            "owner": "619a715093d8cd2bc5f1a473",
+                            "_id": "619a75ced96b74e5cdcff329",
+                            "createdAt": "2021-11-21T16:37:34.019Z",
+                            "updatedAt": "2021-11-21T16:37:34.019Z"
+                        }
                     }
                 }
             },
@@ -1003,16 +1019,20 @@
                     }
                 },
                 "example": {
-                    "transactionData": {
-                        "date": "2021-10-26T00:00:00.000Z",
-                        "category": "Образование",
-                        "description": "Курсы GoIt",
-                        "amount": 3000,
-                        "isIncome": false,
-                        "owner": "6160726197186cf3ccc540b1",
-                        "_id": "616365fa9d89d85b6e6a669c",
-                        "createdAt": "2021-10-10T22:15:22.713Z",
-                        "updatedAt": "2021-10-10T22:15:22.713Z"
+                    "status": "success",
+                    "code": 201,
+                    "user": {
+                        "result": {
+                            "date": "2021-09-26T00:00:00.000Z",
+                            "category": "Образование",
+                            "description": "Курсы GoIt",
+                            "amount": 11000,
+                            "isIncome": false,
+                            "owner": "619a715093d8cd2bc5f1a473",
+                            "_id": "619a75ced96b74e5cdcff329",
+                            "createdAt": "2021-11-21T16:37:34.019Z",
+                            "updatedAt": "2021-11-21T16:37:34.019Z"
+                        }
                     }
                 }
             },
@@ -1095,15 +1115,19 @@
                 "example": {
                     "transactions": [
                         {
+                            "_id": "619a773df9c0fd0fa5ca882b",
                             "date": "2021-10-26T00:00:00.000Z",
-                            "category": "ЗП",
-                            "description": "Основная",
-                            "amount": 16000,
+                            "category": "Доход",
+                            "description": "лотерея",
+                            "amount": 3000,
                             "isIncome": true,
-                            "owner": "6160726197186cf3ccc540b1",
-                            "_id": "616365fa9d89d85b6e6a667c",
-                            "createdAt": "2021-10-10T22:15:22.713Z",
-                            "updatedAt": "2021-10-10T22:15:22.713Z"
+                            "owner": {
+                                "_id": "619a715093d8cd2pc5f1a473",
+                                "email": "user@gmail.com",
+                                "balance": 217000
+                            },
+                            "createdAt": "2021-11-21T16:43:41.376Z",
+                            "updatedAt": "2021-11-21T16:43:41.376Z"
                         }
                     ]
                 }
