@@ -3,8 +3,6 @@ const { User } = require('../../models')
 
 const logout = async (req, res) => {
   console.log('logout')
-  // const { _id } = req.user
-  // await User.findByIdAndUpdate(_id, { token: null })
   const { email } = req.user
   await User.findOneAndUpdate({ email }, { token: null })
   res.json({
