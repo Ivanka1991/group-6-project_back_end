@@ -27,7 +27,7 @@ Additional description about the project and its features.
 
 [FrontEnd Link](https://github.com/Sima7777/group-6-project)
 
-## Svagger
+## Swagger UI
 
 [Swagger Link](https://kapusta-pro.herokuapp.com/api-docs/)
 
