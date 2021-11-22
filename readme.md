@@ -4,8 +4,6 @@
 
 > Team project from GOIT.
 
-![screenshot](./src/images/screenshot.png)
-
 Additional description about the project and its features.
 
 ## Built With
